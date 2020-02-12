@@ -43,9 +43,9 @@ main > *:not(:first-child) {
 		position: absolute;
 		right: 30px;
 		text-align: center;
-		transition: opacity 250ms ease-in-out, z-index 0 ease-in-out 250ms;
+		transition: opacity 250ms ease-in-out,;
 		white-space: nowrap;
-		z-index: 0;
+		z-index: 1;
 	}
 }
 
@@ -65,7 +65,6 @@ main > *:not(:first-child) {
 	
 	button {
 		opacity: 1;
-		transition-delay: 0;
-		z-index: 2;
+		
 	}
 }

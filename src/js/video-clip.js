@@ -27,6 +27,8 @@ export class VideoClip {
 				if(replay){
 					// Show Replay Button at End
 					video.addEventListener('ended', () => {
+						replay.removeAttribute('hidden');
+						const reflow = replay.offsetHeight;
 						videoClip.classList.add('js-video-clip--ended');
 					})		
 				
@@ -34,6 +36,7 @@ export class VideoClip {
 					replay.addEventListener('click', () => {
 						videoClip.classList.remove('js-video-clip--ended');
 						video.play();
+						replay.setAttribute('hidden');
 					})
 				}
 			})
