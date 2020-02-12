@@ -1,35 +1,42 @@
-var manageVideoClips = function(trigger) {
-	'use strict';
-    
-	[].map.call(document.querySelectorAll(trigger), function(videoClip){
-		var video = videoClip.querySelector('video'),
-			videosrc = videoClip.querySelector('source'),
-			datasrc = videosrc.getAttribute('data-src'),
-			replay = videoClip.querySelector('.js-replay');
-		videosrc.setAttribute('src',datasrc);
-		videosrc.removeAttribute('data-src');
+export class VideoClip {
+	constructor(element) {
+		// Wait for DOM
+		document.addEventListener('DOMContentLoaded', () => {
+			[].map.call(document.querySelectorAll(element), (videoClip) => {
+				const video = videoClip.querySelector('video'),
+					  videosrc = videoClip.querySelector('source'),
+					  datasrc = videosrc.getAttribute('data-src'),
+					  replay = videoClip.querySelector('.js-replay');
+				
+				// Set Video Source
+				videosrc.setAttribute('src',datasrc);
+				videosrc.removeAttribute('data-src');
+				
+				// Set Active Class
+				videoClip.classList.add('js-video-clip--active');
 		
-		videoClip.classList.add('js-video-clip--active');
-
-		video.load();
-		
-		video.addEventListener('transitionend', function() {
-			video.play();
-		});
-		
-		if(replay){
-			video.onended = function() {
-				videoClip.classList.add('js-video-clip--ended');
-			};						
-		
-			replay.addEventListener('click', function() {
-				videoClip.classList.remove('js-video-clip--ended');
-				video.play();
-			});
-		}
-	});	
-};
-
-window.addEventListener('load', function() {
-	manageVideoClips('.js-video-clip');
-}, false);
+				// Load Video
+				video.load();
+				
+				// Play Video After Transition
+				video.addEventListener('transitionend', () => {
+					video.play();
+				});
+				
+				// Handle Replay
+				if(replay){
+					// Show Replay Button at End
+					video.addEventListener('ended', () => {
+						videoClip.classList.add('js-video-clip--ended');
+					})		
+				
+					// Replay Action
+					replay.addEventListener('click', () => {
+						videoClip.classList.remove('js-video-clip--ended');
+						video.play();
+					})
+				}
+			})
+		})
+	}
+}
