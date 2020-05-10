@@ -92,7 +92,7 @@ main > *:not(:first-child) {
 	}
 }
 
-/* Hover */
+/* Hover for Desktop */
 @media (hover: hover) and(pointer: fine) {
 	.video-clip:hover .video-clip-control {
 		opacity: 1;
@@ -100,5 +100,12 @@ main > *:not(:first-child) {
 	.video-clip-control:hover {
 		background-color: rgba(2552, 255, 255, 0.9);
 		box-shadow: 0 0 3px 1px rgba(0,0,0,1);
+	}
+}
+
+/* For Touchscreens */
+@media (hover: none) and(pointer: coarse) {
+	.video-clip-control {
+		opacity: 1;
 	}
 }
