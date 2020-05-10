@@ -10,25 +10,27 @@
 
 	<body>
 		<main>			
-			<div class="video-clip js-video-clip">
-				<img src="build/img/1280x720.png" alt="" />
-				
-				<video muted playsinline>
+			<div class="video-clip js-videoClip">
+				<picture>
+					<source srcset="build/img/1280x720.png" type="image/webp" />
+					<img src="build/img/1280x720.png" alt="{{Add Description text}}" />
+				</picture>
+			
+				<video muted playsinline data-video-desc="Big Buck Bunny Video Clip">
 					<source data-src="build/video/big-buck-bunny.mp4" type="video/mp4">
 				</video>
-				
-				<button type="button" class="js-replay" hidden>Play Again</button>
 			</div><!-- End .video-clip -->
 			
-			<div class="video-clip js-video-clip">
-				<img src="build/img/1280x720-Black.png" alt="" />
+			<div class="video-clip js-videoClip">
+				<picture>
+					<source srcset="build/img/1280x720-Black.png" type="image/webp" />
+					<img src="build/img/1280x720-Black.png" alt="{{Add Description text}}" />
+				</picture>
 				
-				<video muted playsinline>
+				<video muted playsinline data-video-desc="Big Buck Bunny Video Clip">
 					<source data-src="build/video/big-buck-bunny.mp4" type="video/mp4">
 				</video>
-				
-				<button type="button" class="js-replay" hidden>Play Again</button>
-			</div><!-- End .video-clip --> 
+			</div><!-- End .video-clip -->
 		</main>
 	</body>
 </html> 

@@ -1,2 +1,2 @@
 import { VideoClip } from './video-clip.min.js'
-const videoClip = new VideoClip('.js-video-clip');
+document.querySelectorAll('.js-videoClip').forEach((instance) => new VideoClip(instance))
